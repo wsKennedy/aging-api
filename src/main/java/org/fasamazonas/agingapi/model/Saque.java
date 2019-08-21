@@ -10,23 +10,26 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "pagamento", schema = "financa")
-public class Pagamento implements Serializable {
+@Table(name = "saque", schema = "financa")
+public class Saque implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id_pagamento")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="pagamento_sequence")
-    @SequenceGenerator(name = "pagamento_sequence", sequenceName = "financa.pagamento_id_pagamento_seq", allocationSize = 1)
+    @NotNull
+    @Column(name = "id_saque")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="saque_sequence")
+    @SequenceGenerator(name = "saque_sequence", sequenceName = "financa.saque_id_saque_seq", allocationSize = 1)
     private Long id;
 
     @NotNull
     private BigDecimal valor;
 
+    private String descricao;
+
     @NotNull
-    @Column(name = "data_pagamento")
-    private LocalDate dataPagamento;
+    @Column(name = "data_saque")
+    private LocalDate dataSaque;
 
     @NotNull
     @ManyToOne

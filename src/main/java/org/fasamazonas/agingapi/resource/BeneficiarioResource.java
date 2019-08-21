@@ -1,7 +1,9 @@
 package org.fasamazonas.agingapi.resource;
 
-import org.fasamazonas.agingapi.model.Pagamento;
-import org.fasamazonas.agingapi.repository.PagamentoRepository;
+import org.fasamazonas.agingapi.model.Beneficiario;
+import org.fasamazonas.agingapi.model.Saque;
+import org.fasamazonas.agingapi.repository.BeneficiarioRepository;
+import org.fasamazonas.agingapi.repository.SaqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,18 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pagamentos")
-public class PagamentoResource {
+@RequestMapping("/beneficiarios")
+public class BeneficiarioResource {
 
     @Autowired
-    private PagamentoRepository pagamentoRepository;
+    private BeneficiarioRepository beneficiarioRepository;
 
 //    @Autowired
 //    private PagamentoService pagamentoService;
 
     @GetMapping
-    public List<Pagamento> findAll(){
-        return pagamentoRepository.findAll();
+    public List<Beneficiario> findAll(){
+        return beneficiarioRepository.findAll();
     }
 
 //    @GetMapping
