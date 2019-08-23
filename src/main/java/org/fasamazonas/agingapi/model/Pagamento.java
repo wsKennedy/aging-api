@@ -22,6 +22,9 @@ public class Pagamento implements Serializable {
     private Long id;
 
     @NotNull
+    private Long protocolo;
+
+    @NotNull
     private BigDecimal valor;
 
     @NotNull

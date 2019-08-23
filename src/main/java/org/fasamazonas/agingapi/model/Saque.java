@@ -23,6 +23,9 @@ public class Saque implements Serializable {
     private Long id;
 
     @NotNull
+    private Long protocolo;
+
+    @NotNull
     private BigDecimal valor;
 
     private String descricao;

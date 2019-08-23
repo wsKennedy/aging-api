@@ -15,15 +15,16 @@ import java.util.List;
 @RequestMapping("/parametros")
 public class ParametroResource {
 
+    private static final String DATA_BASE = "data_base";
+
     @Autowired
     private ParametroRepository parametroRepository;
 
-//    @Autowired
-//    private PagamentoService pagamentoService;
+
 
     @GetMapping
     public List<Paramentro> findAll(){
-        return parametroRepository.findAll();
+        return parametroRepository.findParamentroByKey(DATA_BASE);
     }
 
 //    @GetMapping

@@ -1,12 +1,16 @@
 package org.fasamazonas.agingapi.resource;
 
+import org.fasamazonas.agingapi.model.DTO.SaqueDTO;
 import org.fasamazonas.agingapi.model.Pagamento;
 import org.fasamazonas.agingapi.model.Saque;
 import org.fasamazonas.agingapi.repository.PagamentoRepository;
 import org.fasamazonas.agingapi.repository.SaqueRepository;
+import org.fasamazonas.agingapi.service.SaqueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,25 +22,25 @@ public class SaqueResource {
     @Autowired
     private SaqueRepository saqueRepository;
 
-//    @Autowired
-//    private PagamentoService pagamentoService;
+    @Autowired
+    private SaqueService saqueService;
 
-    @GetMapping
-    public List<Saque> findAll(){
-        return saqueRepository.findAll();
+//    @GetMapping()
+//    public Page<SaqueDTO> findAllBeneficiarios(
+//            @RequestParam( value = "page", required = false, defaultValue = "0") int page,
+//            @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
+//        return saqueService.findAllSaques( page, size);
+//
+//    }
+
+    @GetMapping()
+    public Page<SaqueDTO> search(
+//            @RequestParam("search") String search,
+            @RequestParam( value = "page", required = false, defaultValue = "0") int page,
+            @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
+        return saqueService.search( page, size, "1310014");
+
     }
 
-//    @GetMapping
-//    public Page<Pagamento findAll(final Pageable pageable) {
-//        return pagamentoRepository.filter(pageable);
-//    }
 
-
-
-//    @GetMapping("/{protocolo}")
-//    public ResponseEntity<Pagamento> findByPro(@PathVariable final Long protocolo) {
-//        final Optional<Pagamento> bean = pagamentoRepository.findById(protocolo);
-//
-//        return bean.isPresent() ? ResponseEntity.ok(bean.get()) : ResponseEntity.notFound().build();
-//    }
 }
