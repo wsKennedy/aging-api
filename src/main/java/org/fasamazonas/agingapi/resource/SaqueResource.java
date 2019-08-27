@@ -25,22 +25,22 @@ public class SaqueResource {
     @Autowired
     private SaqueService saqueService;
 
-//    @GetMapping()
-//    public Page<SaqueDTO> findAllBeneficiarios(
-//            @RequestParam( value = "page", required = false, defaultValue = "0") int page,
-//            @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
-//        return saqueService.findAllSaques( page, size);
-//
-//    }
-
     @GetMapping()
-    public Page<SaqueDTO> search(
-//            @RequestParam("search") String search,
+    public Page<SaqueDTO> findAllBeneficiarios(
             @RequestParam( value = "page", required = false, defaultValue = "0") int page,
             @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
-        return saqueService.search( page, size, "1310014");
+        return saqueService.findAllSaques( page, size);
 
     }
+
+//    @GetMapping()
+//    public Page<SaqueDTO> search(
+////            @RequestParam("search") String search,
+//            @RequestParam( value = "page", required = false, defaultValue = "0") int page,
+//            @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
+//        return saqueService.search( page, size, "1310014");
+//
+//    }
 
 
 }
