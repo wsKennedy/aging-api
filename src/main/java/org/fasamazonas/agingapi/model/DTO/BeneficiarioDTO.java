@@ -14,18 +14,18 @@ public class BeneficiarioDTO {
 
     private BigDecimal valorPagamento;
 
+    private BigDecimal saldo;
+
     private LocalDate dataPagamento;
 
     private BigDecimal valorSaque;
-
-    private BigDecimal saldo;
 
     private LocalDate dataSaque;
 
     public BeneficiarioDTO(){}
 
-    public  BeneficiarioDTO(Long protocolo, String nome, BigDecimal valorPagamento, LocalDate dataPagamento, BigDecimal valorSaque, BigDecimal saldo, LocalDate dataSaque){
 
+    public BeneficiarioDTO(Long protocolo, String nome, BigDecimal valorPagamento, BigDecimal valorSaque, BigDecimal saldo, LocalDate dataPagamento,  LocalDate dataSaque) {
         this.protocolo = protocolo;
         this.nome = nome;
         this.valorPagamento = valorPagamento;
@@ -33,7 +33,5 @@ public class BeneficiarioDTO {
         this.valorSaque = valorSaque;
         this.saldo = saldo;
         this.dataSaque = dataSaque;
-
-
     }
 }

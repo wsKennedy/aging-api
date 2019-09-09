@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -28,19 +29,14 @@ public class SaqueResource {
     @GetMapping()
     public Page<SaqueDTO> findAllBeneficiarios(
             @RequestParam( value = "page", required = false, defaultValue = "0") int page,
-            @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
-        return saqueService.findAllSaques( page, size);
+            @RequestParam( value = "size", required = false, defaultValue = "30") int size,
+            @RequestParam LocalDate dateInitial,
+            @RequestParam LocalDate dateFinal){
+
+        return saqueService.findAllSaques( page, size, dateInitial, dateFinal);
 
     }
 
-//    @GetMapping()
-//    public Page<SaqueDTO> search(
-////            @RequestParam("search") String search,
-//            @RequestParam( value = "page", required = false, defaultValue = "0") int page,
-//            @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
-//        return saqueService.search( page, size, "1310014");
-//
-//    }
 
 
 }

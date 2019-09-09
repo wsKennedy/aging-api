@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -16,13 +17,9 @@ public class SaqueService {
     @Autowired
     private SaqueRepository saqueRepository;
 
-    public Page<SaqueDTO> findAllSaques(int page , int size){
+    public Page<SaqueDTO> findAllSaques(int page , int size, LocalDate dateInital, LocalDate dateFinal){
         PageRequest pageRequest = PageRequest.of( page, size, Sort.Direction.ASC, "nome");
-        return saqueRepository.findAllSaques(pageRequest);
+        return saqueRepository.findAllSaques(pageRequest, dateInital, dateFinal);
     }
 
-    public Page<SaqueDTO> search(int page , int size, String search){
-        PageRequest pageRequest = PageRequest.of( page, size, Sort.Direction.ASC, "nome");
-        return saqueRepository.search(pageRequest, search);
-    }
 }

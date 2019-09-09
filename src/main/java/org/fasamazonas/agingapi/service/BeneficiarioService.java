@@ -16,6 +16,6 @@ public class BeneficiarioService {
 
     public Page<BeneficiarioDTO> findAllBeneficiarios(int page, int size){
         PageRequest pageRequest = PageRequest.of( page, size, Sort.Direction.ASC, "nome");
-       return beneficiarioRepository.findAllBeneficiarios(pageRequest);
+        return beneficiarioRepository.findAllBeneficiarios(pageRequest);
     }
 }

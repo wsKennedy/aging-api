@@ -24,7 +24,7 @@ public class PagamentoResource {
     @GetMapping()
     public Page<PagamentoDTO> findAllPagamentos(
             @RequestParam( value = "page", required = false, defaultValue = "0") int page,
-            @RequestParam( value = "size", required = false, defaultValue = "10") int size) {
+            @RequestParam( value = "size", required = false, defaultValue = "30") int size) {
         return pagamentoService.findAllPagamentos( page, size);
 
     }
