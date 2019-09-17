@@ -22,5 +22,11 @@ public interface SaqueRepository extends JpaRepository<Saque, Long> {
             + " where s.dataSaque between ?2 and ?3 order by s.protocolo")
     public Page<SaqueDTO> findAllSaques(Pageable pageable, LocalDate dateInital, LocalDate dateFinal);
 
+    @Query("SELECT  new org.fasamazonas.agingapi.model.DTO.SaqueDTO( b.protocolo, b.nome, s.valor, s.dataSaque, s.descricao ) "
+            + " from Beneficiario as b "
+            + " inner join  Saque as s ON  b.id = s.beneficiario.id "
+            + " where s.protocolo = ?1")
+    public List<SaqueDTO> findByProtocolo(Long protocolo);
+
 }
 

@@ -5,10 +5,10 @@ import org.fasamazonas.agingapi.repository.PagamentoRepository;
 import org.fasamazonas.agingapi.service.PagamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pagamentos")
@@ -24,8 +24,15 @@ public class PagamentoResource {
     @GetMapping()
     public Page<PagamentoDTO> findAllPagamentos(
             @RequestParam( value = "page", required = false, defaultValue = "0") int page,
-            @RequestParam( value = "size", required = false, defaultValue = "30") int size) {
-        return pagamentoService.findAllPagamentos( page, size);
+            @RequestParam( value = "size", required = false, defaultValue = "30") int size,
+            @PathVariable LocalDate dateInitial,@PathVariable LocalDate dateFinal) {
+        return pagamentoService.findAllPagamentos( page, size, dateInitial, dateFinal);
+
+    }
+
+    @GetMapping("/{protocolo}")
+    public List<PagamentoDTO> findByProtocolo(@PathVariable Long protocolo ) {
+        return pagamentoService.findByProtocolo( protocolo);
 
     }
 

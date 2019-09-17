@@ -1,0 +1,18 @@
+# PROFILE DEFAULT
+spring:
+  profiles:
+    active: dev
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    hibernate.ddl-auto: validate
+    show-sql: false
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://${postgres.hostname:localhost}:${postgres.port:5432}/${postgres.dbname:agingdb}
+    driver-class-name: org.postgresql.Driver
+    username: ${postgres.user:postgres}
+    password: ${postgres.password:root}
+    jackson:
+       deserialization:
+         fail-on-unknown-properties=true:

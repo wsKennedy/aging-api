@@ -22,4 +22,8 @@ public class SaqueService {
         return saqueRepository.findAllSaques(pageRequest, dateInital, dateFinal);
     }
 
+    public List<SaqueDTO> findByProtocolo(Long protocolo){
+        return saqueRepository.findByProtocolo(protocolo);
+    }
+
 }

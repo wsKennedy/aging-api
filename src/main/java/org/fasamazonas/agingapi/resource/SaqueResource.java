@@ -8,10 +8,7 @@ import org.fasamazonas.agingapi.repository.SaqueRepository;
 import org.fasamazonas.agingapi.service.SaqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,16 +23,22 @@ public class SaqueResource {
     @Autowired
     private SaqueService saqueService;
 
-    @GetMapping()
+    @GetMapping("/{dateInitial}/{dateFinal}")
     public Page<SaqueDTO> findAllBeneficiarios(
             @RequestParam( value = "page", required = false, defaultValue = "0") int page,
             @RequestParam( value = "size", required = false, defaultValue = "30") int size,
-            @RequestParam LocalDate dateInitial,
-            @RequestParam LocalDate dateFinal){
+            @PathVariable LocalDate dateInitial,
+            @PathVariable LocalDate dateFinal){
 
         return saqueService.findAllSaques( page, size, dateInitial, dateFinal);
 
     }
+
+    @GetMapping("/{protocolo}")
+    public List<SaqueDTO> findByProtocolo( @PathVariable Long protocolo){
+        return saqueService.findByProtocolo(protocolo);
+    }
+
 
 
 
