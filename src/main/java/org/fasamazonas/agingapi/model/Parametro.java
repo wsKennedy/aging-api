@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "parametro", schema = "config")
-public class Paramentro implements Serializable {
+public class Parametro implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,9 +1,7 @@
 package org.fasamazonas.agingapi.resource;
 
-import org.fasamazonas.agingapi.model.Beneficiario;
-import org.fasamazonas.agingapi.model.Paramentro;
-import org.fasamazonas.agingapi.repository.BeneficiarioRepository;
-import org.fasamazonas.agingapi.repository.ParametroRepository;
+import org.fasamazonas.agingapi.model.Parametro;
+import org.fasamazonas.agingapi.service.ParametroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,29 +13,15 @@ import java.util.List;
 @RequestMapping("/parametros")
 public class ParametroResource {
 
-    private static final String DATA_BASE = "data_base";
 
     @Autowired
-    private ParametroRepository parametroRepository;
+    private ParametroService parametroService;
 
 
 
     @GetMapping
-    public List<Paramentro> findAll(){
-        return parametroRepository.findParamentroByKey(DATA_BASE);
+    public Parametro findAll(){
+        return parametroService.findParametro();
     }
 
-//    @GetMapping
-//    public Page<Pagamento findAll(final Pageable pageable) {
-//        return pagamentoRepository.filter(pageable);
-//    }
-
-
-
-//    @GetMapping("/{protocolo}")
-//    public ResponseEntity<Pagamento> findByPro(@PathVariable final Long protocolo) {
-//        final Optional<Pagamento> bean = pagamentoRepository.findById(protocolo);
-//
-//        return bean.isPresent() ? ResponseEntity.ok(bean.get()) : ResponseEntity.notFound().build();
-//    }
 }

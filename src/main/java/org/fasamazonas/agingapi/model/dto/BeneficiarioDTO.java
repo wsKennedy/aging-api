@@ -23,15 +23,8 @@ public class BeneficiarioDTO {
 
     private LocalDate dataSaque;
 
-    public BeneficiarioDTO(){}
+    private LocalDate dataBase;
 
-    public BeneficiarioDTO(Long protocolo, String nome, BigDecimal valorPagamento, BigDecimal valorSaque, BigDecimal saldo, LocalDate dataPagamento, LocalDate dataSaque) {
-        this.protocolo = protocolo;
-        this.nome = nome;
-        this.valorPagamento = valorPagamento;
-        this.dataPagamento = dataPagamento;
-        this.valorSaque = valorSaque;
-        this.saldo = saldo;
-        this.dataSaque = dataSaque;
-    }
+    private int meses;
+
 }
