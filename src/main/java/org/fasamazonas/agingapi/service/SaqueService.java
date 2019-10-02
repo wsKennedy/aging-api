@@ -1,11 +1,8 @@
 package org.fasamazonas.agingapi.service;
 
-import org.fasamazonas.agingapi.model.DTO.SaqueDTO;
+import org.fasamazonas.agingapi.model.dto.SaqueDTO;
 import org.fasamazonas.agingapi.repository.SaqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,13 +14,16 @@ public class SaqueService {
     @Autowired
     private SaqueRepository saqueRepository;
 
-    public Page<SaqueDTO> findAllSaques(int page , int size, LocalDate dateInital, LocalDate dateFinal){
-        PageRequest pageRequest = PageRequest.of( page, size, Sort.Direction.ASC, "nome");
-        return saqueRepository.findAllSaques(pageRequest, dateInital, dateFinal);
+    public List<SaqueDTO> findAllSaques( LocalDate dtInital, LocalDate dtFinal ) {
+        return saqueRepository.findAllSaques( dtInital, dtFinal );
     }
 
     public List<SaqueDTO> findByProtocolo(Long protocolo){
         return saqueRepository.findByProtocolo(protocolo);
+    }
+
+    public List<Long> findByLast(LocalDate dtInitial, LocalDate dtFinal) {
+        return saqueRepository.findByLast( dtInitial, dtFinal );
     }
 
 }

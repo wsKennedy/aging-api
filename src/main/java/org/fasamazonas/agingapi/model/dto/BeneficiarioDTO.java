@@ -1,11 +1,12 @@
-package org.fasamazonas.agingapi.model.DTO;
+package org.fasamazonas.agingapi.model.dto;
 
-import lombok.Getter;
+
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Getter
+@Data
 public class BeneficiarioDTO {
 
     private Long protocolo;
@@ -24,8 +25,7 @@ public class BeneficiarioDTO {
 
     public BeneficiarioDTO(){}
 
-
-    public BeneficiarioDTO(Long protocolo, String nome, BigDecimal valorPagamento, BigDecimal valorSaque, BigDecimal saldo, LocalDate dataPagamento,  LocalDate dataSaque) {
+    public BeneficiarioDTO(Long protocolo, String nome, BigDecimal valorPagamento, BigDecimal valorSaque, BigDecimal saldo, LocalDate dataPagamento, LocalDate dataSaque) {
         this.protocolo = protocolo;
         this.nome = nome;
         this.valorPagamento = valorPagamento;

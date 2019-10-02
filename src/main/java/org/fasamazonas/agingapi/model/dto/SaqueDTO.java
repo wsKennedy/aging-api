@@ -1,11 +1,11 @@
-package org.fasamazonas.agingapi.model.DTO;
+package org.fasamazonas.agingapi.model.dto;
 
-import lombok.Getter;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Getter
+@Data
 public class SaqueDTO {
 
     private Long protocolo;

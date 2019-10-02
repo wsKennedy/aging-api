@@ -27,5 +27,4 @@ public class Beneficiario implements Serializable {
     @NotNull
     private String nome;
 
-    private  BigDecimal saldo;
 }

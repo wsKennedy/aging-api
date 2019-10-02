@@ -1,8 +1,6 @@
-package org.fasamazonas.agingapi.model.DTO;
+package org.fasamazonas.agingapi.model.dto;
 
 import lombok.Data;
-import lombok.Getter;
-import org.fasamazonas.agingapi.model.Pagamento;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
