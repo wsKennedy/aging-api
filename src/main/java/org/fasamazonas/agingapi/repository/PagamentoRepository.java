@@ -5,6 +5,7 @@ import org.fasamazonas.agingapi.model.Pagamento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -30,6 +31,10 @@ public interface PagamentoRepository extends JpaRepository<Pagamento, Long> {
             + "inner join  Pagamento as p ON  b.id = p.beneficiario.id "
             + "where p.protocolo = ?1 "  )
     List<PagamentoDTO> findByProtocolo(Long protocolo);
+
+    @Query(value = "select  sum(p.valor) from financa.pagamento as p where p.protocolo = ?1 ",nativeQuery = true)
+    BigDecimal valorPagamento(Long protocolo);
+
 
 
 }

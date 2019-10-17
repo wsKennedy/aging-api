@@ -24,10 +24,8 @@ public class BeneficiarioResource {
     private BeneficiarioService beneficiarioSevice;
 
     @GetMapping
-    public List<BeneficiarioDTO> findAllBeneficiarios(
-            @RequestParam @DateTimeFormat( pattern = "yyyy-MM-dd" ) LocalDate dtInitial,
-            @RequestParam @DateTimeFormat( pattern = "yyyy-MM-dd" ) LocalDate dtFinal) {
-        return beneficiarioSevice.findAllBeneficiarios( dtInitial, dtFinal );
+    public List<BeneficiarioDTO> findAllBeneficiarios() {
+        return beneficiarioSevice.findAllBeneficiarios( );
 
     }
 

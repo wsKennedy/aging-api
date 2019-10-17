@@ -5,6 +5,8 @@ import org.fasamazonas.agingapi.model.Saque;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,6 +31,9 @@ public interface SaqueRepository extends JpaRepository<Saque, Long> {
             + " inner join  Saque as s ON  b.id = s.beneficiario.id "
             + " where s.protocolo = ?1")
     List<SaqueDTO> findByProtocolo(Long protocolo);
+
+    @Query(value = "select  sum(s.valor) from financa.saque as s where s.protocolo = ?1 ",nativeQuery = true)
+    BigDecimal valorSaque(Long protocolo);
 
 
 }
