@@ -38,6 +38,8 @@ public class BeneficiarioService {
     private final int NOME =              1;
     private final int DATA_PAGAMENTO =    2;
     private final int DATA_SAQUE =        3;
+    private final int VALOR_PAGAMENTO =   4;
+    private final int VALOR_SAQUE =       5;
 
 
     public List<BeneficiarioDTO> findAllBeneficiarios(){
@@ -51,8 +53,8 @@ public class BeneficiarioService {
 
             dto.setNome(((String) item[NOME]));
             dto.setProtocolo(((BigInteger) item[PROTOCOLO]).longValue());
-            dto.setValorPagamento(pagamentoRepository.valorPagamento(dto.getProtocolo()));
-            dto.setValorSaque(saqueRepository.valorSaque(dto.getProtocolo()));
+            dto.setValorPagamento(((BigDecimal) item[VALOR_PAGAMENTO]));
+            dto.setValorSaque(((BigDecimal) item[VALOR_SAQUE]));
             dto.setDataPagamento(LocalDate.parse(item[DATA_PAGAMENTO].toString()));
             dto.setDataSaque(LocalDate.parse(item[DATA_SAQUE].toString()));
             dto.setSaldo(dto.getValorPagamento().subtract(dto.getValorSaque()));
