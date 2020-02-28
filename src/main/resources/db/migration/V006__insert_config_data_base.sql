@@ -1,0 +1,1 @@
+INSERT INTO config.parametro (nome, valor, descricao) VALUES ('data_base', '2020-01-01', 'configuração de data base')

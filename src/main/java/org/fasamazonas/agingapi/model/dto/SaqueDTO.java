@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Data
 public class SaqueDTO {
 
-    private Long protocolo;
+    private String protocolo;
 
     private String nome;
 
@@ -20,7 +20,7 @@ public class SaqueDTO {
 
     public SaqueDTO(){}
 
-    public SaqueDTO(Long protocolo, String nome, BigDecimal valorSaque, LocalDate dataSaque, String descricao){
+    public SaqueDTO(String protocolo, String nome, BigDecimal valorSaque, LocalDate dataSaque, String descricao){
 
         this.protocolo = protocolo;
         this.nome = nome;

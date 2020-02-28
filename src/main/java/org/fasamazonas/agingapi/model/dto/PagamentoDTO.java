@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Data
 public class PagamentoDTO {
 
-    private Long protocolo;
+    private String protocolo;
 
     private String nome;
 
@@ -19,7 +19,7 @@ public class PagamentoDTO {
 
     public PagamentoDTO(){}
 
-    public PagamentoDTO(Long protocolo, String nome, BigDecimal valorPagamento, LocalDate dataPagamento){
+    public PagamentoDTO(String protocolo, String nome, BigDecimal valorPagamento, LocalDate dataPagamento){
 
         this.protocolo = protocolo;
         this.nome = nome;

@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface ParametroRepository extends JpaRepository<Parametro, Long> {
 
-    @Query("select p from Parametro p where p.nome = ?1 ")
-    Parametro findParametro(String key);
+
+    Parametro findByNome(String nome);
 
 
 }

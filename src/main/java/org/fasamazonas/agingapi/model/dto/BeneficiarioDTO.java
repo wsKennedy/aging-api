@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 public class BeneficiarioDTO {
 
-    private Long protocolo;
+    private String protocolo;
 
     private String nome;
 

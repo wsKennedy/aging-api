@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,12 +24,6 @@ public class BeneficiarioService {
 
     @Autowired
     private BeneficiarioRepository beneficiarioRepository;
-
-    @Autowired
-    private SaqueRepository saqueRepository;
-
-    @Autowired
-    private PagamentoRepository pagamentoRepository;
 
     @Autowired
     private ParametroRepository parametroRepository;
@@ -46,19 +41,19 @@ public class BeneficiarioService {
 
         List<Object[]> queryResult = beneficiarioRepository.findAllBeneficiarios().stream().distinct().collect(Collectors.toList());
 
-        Parametro param = parametroRepository.findParametro(DATA_BASE);
+        Parametro param = parametroRepository.findByNome(DATA_BASE);
 
         return queryResult.stream().map(item -> {
             BeneficiarioDTO dto = new BeneficiarioDTO();
 
             dto.setNome(((String) item[NOME]));
-            dto.setProtocolo(((BigInteger) item[PROTOCOLO]).longValue());
+            dto.setProtocolo(((String) item[PROTOCOLO]));
             dto.setValorPagamento(((BigDecimal) item[VALOR_PAGAMENTO]));
             dto.setValorSaque(((BigDecimal) item[VALOR_SAQUE]));
             dto.setDataPagamento(LocalDate.parse(item[DATA_PAGAMENTO].toString()));
             dto.setDataSaque(LocalDate.parse(item[DATA_SAQUE].toString()));
             dto.setSaldo(dto.getValorPagamento().subtract(dto.getValorSaque()));
-            dto.setDataBase(LocalDate.parse(param.getValor()));
+            dto.setDataBase(LocalDate.parse(param == null?LocalDate.now().toString():param.getValor() ));
 
             Integer meses = getIntervalDate(dto.getDataPagamento(), dto.getDataBase());
 

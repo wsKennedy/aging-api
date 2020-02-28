@@ -15,7 +15,7 @@ public class ParametroService {
     private ParametroRepository parametroRepository;
 
     public Parametro findParametro( ) {
-        return parametroRepository.findParametro(DATA_BASE);
+        return parametroRepository.findByNome(DATA_BASE);
     }
 
 }
